@@ -1,0 +1,46 @@
+# Node / build
+node_modules/
+dist/
+build/
+.next/
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Replit / local runtime junk
+**/.local/
+**/.config/
+**/.agents/
+**/.cache/
+**/.upm/
+**/.pythonlibs/
+**/.semgrep/
+
+# Databases / WAL / SHM
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Binary / generated state
+*.bin
+
+# Optional: if you do NOT want giant uploaded media in git
+# **/attached_assets/
+
+# Optional: ignore Replit config if you don't care
+# **/.replit
