@@ -44,3 +44,5 @@ Thumbs.db
 
 # Optional: ignore Replit config if you don't care
 # **/.replit
+# Local Synapse runtime data
+the-vs-studio/data/
