@@ -2,14 +2,18 @@ import OpenAI from "openai";
 import { NextResponse } from "next/server";
 import { PONZ_SYSTEM_PROMPT } from "@/lib/ponz-directive";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 const DR_PONZ_MODEL =
   process.env.OPENAI_MODEL_ID ||
   "ft:gpt-4.1-nano-2025-04-14:personal:drponz:Cuia45yO";
 const FALLBACK_MODEL = "gpt-4o-mini";
+
+function getOpenAIClient() {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new Error("Missing OPENAI_API_KEY in .env.local");
+  }
+  return new OpenAI({ apiKey });
+}
 
 export async function POST(req: Request) {
   try {
@@ -31,6 +35,8 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
+
+    const openai = getOpenAIClient();
 
     if (!Array.isArray(messages)) {
       return NextResponse.json(
